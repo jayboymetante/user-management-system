@@ -5,6 +5,21 @@
 		},
 		{
 			"path": "..\\jboy"
+		},
+		{
+			"path": "..\\tabogon-managment-system"
+		},
+		{
+			"path": "..\\login"
+		},
+		{
+			"path": "..\\admin"
+		},
+		{
+			"path": "..\\admin_dashboard"
+		},
+		{
+			"path": "..\\des"
 		}
 	],
 	"settings": {}
