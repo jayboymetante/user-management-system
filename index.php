@@ -6,85 +6,118 @@ if (loggedin()) {
 
     echo   'You\'re Log in, ' . $_SESSION['username'] . ''; ?>
     <!DOCTYPE html>
-    <html>
+<html lang="en">
 
-    <title>W3.CSS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-     <style>
-           * {
-              font-family: sans-serif; /* Change your font family */
-            }
-            .content-table {
-                border-collapse: collapse;
-                margin: 25px 0;
-                font-size: 0.9em;
-                min-width: 400px;
-                border-radius: 5px 5px 0 0;
-                overflow: hidden;
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-            }
-            .content-table thead tr {
-                background-color: #009879;
-                color: #ffffff;
-                text-align: left;
-                font-weight: bold;
-            }
-            .content-table th,
-            .content-table td {
-                padding: 12px 15px;
-            }
-            .content-table tbody tr {
-               border-bottom: 1px solid #dddddd;
-            }
-            .content-table tbody tr:nth-of-type(even) {
-              background-color: #f3f3f3;
-            }
-            .content-table tbody tr:last-of-type {
-              border-bottom: 2px solid #009879;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="index_style.css" />
+    <title>Admin Dashboard</title>
+</head>
 
-            .content-table tbody tr.active-row {
-                font-weight: bold;
-                color: #009879;
-            }
-       </style> 
-    <body>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
+                    class="fas fa-user-secret me-2"></i>Welcome Admin</div>
+            <div class="list-group list-group-flush my-3">
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                        <a href="resident_info.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Resident Personal Info</a>
+                        <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">Log out</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-    <!-- Sidebar -->
-    <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:10%">
-    <h3 class="w3-bar-item">Menu</h3>
-    <a href="logout.php" class="w3-bar-item w3-button">Log out</a>
-    </div>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                    <h2 class="fs-2 m-0">Dashboard</h2>
+                </div>
 
-    <!-- Page Content -->
-    <div style="margin-left:12%">
-    <h2>Users List <a href="add.php"><button type="button">Add</button></a> </h2>
-        <table class="content-table">
-          <thead>
-             <tr>
-                <th>First Name</th>
-                <th>Middle Name</th>
-                <th>Last Name</th>
-                <th>Gender</th>
-                <th>Age</th>
-                <th>Mobile</th>
-                <th>Email</th>
-                <th>Birthday</th>
-                <th>Citizenship</th>
-                <th>Purok</th>
-                <th>Civil Status</th>
-                <th>Address</th>
-                <th>Weight</th>
-                <th>Height</th>
-                <th>Comorbidities</th>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            
+        
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-                
-                <th>Action</th>
-              </tr>
-            </thead>
-            <?php
+            <div class="container-fluid px-4">
+                <div class="row g-3 my-2">
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">0</h3>
+                                <p class="fs-5">Registered</p>
+                            </div>
+                            <i class=" border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">0</h3>
+                                <p class="fs-5">Vaccine Stocks</p>
+                            </div>
+                            <i
+                                class=" primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">0</h3>
+                                <p class="fs-5">Vaccinated</p>
+                            </div>
+                            <i class="primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">0</h3>
+                                <p class="fs-5">Unvaccinated</p>
+                            </div>
+                            <i class=" primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-5">
+                    <h3 class="fs-4 mb-3">Recent Orders</h3>
+                    <div class="col">
+                        <table class="table bg-white rounded shadow-sm  table-hover">
+                        <thead>
+                         <tr>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
+                            <th>Contact</th>
+                            <th>Birthday</th>
+                            <th>Address</th>
+                            <th>Action</th>  
+                            
+                        </thead>
+                          
+                        <?php
             $query = "SELECT * FROM  user_info";
             $result = $mysqli->query($query);
             while ($data = $result->fetch_assoc()) {
@@ -98,60 +131,54 @@ if (loggedin()) {
                     echo "<td>";
                         echo "$data[last_name]";
                     echo "</td>";
-                    echo "<td>";
-                        echo "$data[gender]";
-                    echo "</td>";
-                    echo "<td>";
-                        echo "$data[age]";
-                    echo "</td>";
+                    
+                    
                     echo "<td>";
                         echo "$data[mobile_number]";
                     echo "</td>";
-                    echo "<td>";
-                        echo "$data[email_address]";
-                    echo "</td>";
+                    
                     echo "<td>";
                         echo "$data[birth_date]";
                     echo "</td>";
-                    echo "<td>";
-                        echo "$data[citizenship]";
-                    echo "</td>";
-                    echo "<td>";
-                        echo "$data[purok]";
-                    echo "</td>";
-                    echo "<td>";
-                        echo "$data[civil_status]";
-                    echo "</td>";
+                    
+                    
                     echo "<td>";
                         echo "$data[address]";
                     echo "</td>";
-                    echo "<td>";
-                        echo "$data[weight]";
-                    echo "</td>";
-                    echo "<td>";
-                        echo "$data[height]";
-                    echo "</td>";
-                    echo "<td>";
-                        echo "$data[comorbidities]";
-                    echo "</td>";
+                    
+                    
+                    
                     echo "<td>";
                         echo ' <a href="edit.php"><button type="button">Edit</button></a>';
-                        echo '<a href="delete.php"><button type="button">Delete</button></a>';
+                        
                     echo "</td>";
                 echo "</tr>";
             }
-            ?>
-        </table>
+            ?>   
 
+                    </div>
+                </div>
 
-
-
+            </div>
+        </div>
     </div>
-        
-    </body>
-    </html>
+    <!-- /#page-content-wrapper -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
+
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script>
+</body>
+
+</html>
 <?php } else {
-    // include 'login.php';
+    
     header('Location: login.php');
 }
 ?>

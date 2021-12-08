@@ -39,17 +39,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="login_design.css">   
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+        </style>
 </head>
 <body>
-    <div id="header">
+    
+    <img src="bghos.jpg" alt="">
+    <div class = "vec1"></div> 
+    <div class = "vec4"></div>
+    <div class = "vec3"></div>
+    <div class = "vec2"></div>
+   
+    <img id="cblg" src="cebulogo.png" alt="cebu">
+    <img id="tbgnlg" src="tabogon logo.png" alt="tabogon">
+    
+<div class="ins">
+    
+    <div id="header">   
         <h1>Tabogon Vaccination System</h1>
     </div>
     <br>
+    <br>
     <form action="/user-management-system/login.php" method="POST" style="text-align:center;" >
-        Username: <input type="text" name="username" value="" required> <br>
-        Password: <input type="password" name="password" value="" required> <br>
-        <input type="submit" value="Log in">
-        <hr>
+        <label for="username"><b>Username</b></label><input type="text" name="username" value="" required> <br>
+        <label for="password"><b>Password</b></label><input type="password" name="password" value="" required> <br>
+        <input type="submit" id="btnsub" value="Log in">
+       
     </form>
+</div>
 </body>
 </html>

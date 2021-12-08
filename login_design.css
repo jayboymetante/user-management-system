@@ -1,0 +1,133 @@
+.ins
+{
+    position:absolute;
+    background-color: rgba(255, 255, 255, 0.644);
+    height: 50vh;
+    width: 100vh;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.466);
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    padding: 10px;
+    box-shadow: 5px 10px 8px 0px #888888;
+}
+h1
+{
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+}
+input
+{
+    margin: 10px;
+    padding: 6px;
+    font-size: 15px;    
+    border-radius: 30px;
+    border-color: #02b16b;
+    background-color: rgba(255, 255, 255, 0.445);
+    font-family: 'Comfortaa', cursive;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    transition: 0.5s;
+}
+input:hover
+{
+    background-color: rgba(184, 183, 183, 0.479);
+}
+label
+{
+    margin-left: 20%;
+    transform: translate(-50%, -50%);
+    font-family: 'Comfortaa', cursive;
+    width: 200px; 
+    font-size: 20px;    
+    display: inline-block;
+}
+.vec1
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    overflow:hidden;
+}
+
+img
+{
+    top: 0;
+    left: 0;
+    position:absolute;
+    height: 100%;
+    width: 100%;
+}
+#btnsub
+{
+    width: 150px;
+    margin-left: 45%;
+    cursor: pointer;
+    transition: 1s;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#btnsub:hover
+{
+    background-color: #02b16b;
+}
+.vec1
+{
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 40%;
+    height: 100%;
+    background-color: #02b16ba4;
+    overflow: hidden;
+}
+.vec2
+{
+    position: absolute;
+    left: -5px;
+    width: 100%;
+    height: 100px;
+    background-color: #43fff6de;
+    overflow: hidden;
+}
+.vec3
+{
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 20%;
+    height: 100%;
+    background-color: #006d41a4;
+    overflow: hidden;
+}
+.vec4
+{
+    position: absolute;
+    top: 50px;
+    left: -5px;
+    width: 100%;
+    height: 105px;
+    background-color: #009e965b;
+    overflow: hidden;
+}
+#cblg
+{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    margin-left:10%;
+    top: 1.5%;
+}
+#tbgnlg
+{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    margin-left:80%;
+    top: 1.5%;
+}

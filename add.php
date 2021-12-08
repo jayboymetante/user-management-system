@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         else{
          die("failed: " . $mysqli->error);
         }
-        header('Location: index.php');
+        header('Location:  resident_info.php');
     }
 }
 ?>
