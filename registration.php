@@ -68,7 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
         </style>
 </head>
-<body>  
+<body> 
+    <br> 
     <a href="login.php"><button type="button">Login</button></a> 
     <div>
         <form action"registration.php" method="post">

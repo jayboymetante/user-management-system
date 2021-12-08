@@ -4,15 +4,14 @@ require 'connect.php';
 
 if (loggedin()) {
 
-    echo   'You\'re Log in, ' . $_SESSION['username'] . ' <a href="logout.php"><button>Log out</button></a>'; ?>
-
+    echo   'You\'re Log in, ' . $_SESSION['username'] . ''; ?>
     <!DOCTYPE html>
     <html>
-    <head>
-    
-    </head>
 
-       <style>
+    <title>W3.CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <style>
            * {
               font-family: sans-serif; /* Change your font family */
             }
@@ -49,10 +48,18 @@ if (loggedin()) {
                 font-weight: bold;
                 color: #009879;
             }
-       </style>
-
+       </style> 
     <body>
-        <h2>Users List <a href="add.php"><button type="button">Add</button></a> </h2>
+
+    <!-- Sidebar -->
+    <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:10%">
+    <h3 class="w3-bar-item">Menu</h3>
+    <a href="logout.php" class="w3-bar-item w3-button">Log out</a>
+    </div>
+
+    <!-- Page Content -->
+    <div style="margin-left:12%">
+    <h2>Users List <a href="add.php"><button type="button">Add</button></a> </h2>
         <table class="content-table">
           <thead>
              <tr>
@@ -135,6 +142,12 @@ if (loggedin()) {
             }
             ?>
         </table>
+
+
+
+
+    </div>
+        
     </body>
     </html>
 <?php } else {
