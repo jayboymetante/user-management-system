@@ -1,51 +1,3 @@
-<?php
-require 'connect.php';
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['first_name']) 
-      && isset($_POST['middle_name'])
-      && isset($_POST['last_name'])
-      && isset($_POST['gender'])
-      && isset($_POST['age'])
-      && isset($_POST['mobile_number'])
-      && isset($_POST['email_address'])
-      && isset($_POST['birth_date'])
-      && isset($_POST['citizenship'])
-      && isset($_POST['purok'])
-      && isset($_POST['address'])
-      && isset($_POST['civil_status'])
-      && isset($_POST['weight'])
-      && isset($_POST['height'])
-      && isset($_POST['comorbidities'])){
-
-
-
-        $sql = "INSERT INTO user_info (first_name,middle_name,last_name,gender,age,mobile_number,email_address,birth_date,citizenship,purok,address,civil_status,weight,height,comorbidities) 
-        VALUES('".$mysqli->real_escape_string($_POST['first_name'])."', '"
-                 .$mysqli->real_escape_string($_POST['middle_name'])."','"
-                 .$mysqli->real_escape_string($_POST['last_name'])."','"
-                 .$mysqli->real_escape_string($_POST['gender'])."','"
-                 .$mysqli->real_escape_string($_POST['age'])."','"
-                 .$mysqli->real_escape_string($_POST['mobile_number'])."','"
-                 .$mysqli->real_escape_string($_POST['email_address'])."','"
-                 .$mysqli->real_escape_string($_POST['birth_date'])."','"
-                 .$mysqli->real_escape_string($_POST['citizenship'])."','"
-                 .$mysqli->real_escape_string($_POST['purok'])."','"
-                 .$mysqli->real_escape_string($_POST['address'])."','"
-                 .$mysqli->real_escape_string($_POST['civil_status'])."','"
-                 .$mysqli->real_escape_string($_POST['weight'])."','"
-                 .$mysqli->real_escape_string($_POST['height'])."','"
-                 .$mysqli->real_escape_string($_POST['comorbidities'])."')";
-
-        if ($mysqli->query($sql) === TRUE) {
-        echo "New record created successfully";
-        } 
-        else{
-         die("failed: " . $mysqli->error);
-        }
-        header('Location:  resident_info.php');
-    }
-}
-?>
 <html>
 <head>
 
@@ -60,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          <div class="container">
              <div class="row">
                  <div class="col-sm-3">
-                    <h1>VACCINE INFORMATION</h1>
+                    <h1>VACCINE Data</h1>
                     <p>Online Registration</p>
                     <hr class="mb-3">
                     <label for="first_name"><b>First Name</b></label>
@@ -146,7 +98,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          </form> 
      </div>   
      
-      </script>
+     
     </body>
 </html>
-

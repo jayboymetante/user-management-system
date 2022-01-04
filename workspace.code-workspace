@@ -26,6 +26,15 @@
 		},
 		{
 			"path": "..\\dash"
+		},
+		{
+			"path": "..\\reg"
+		},
+		{
+			"path": "..\\..\\..\\Users\\jayboy\\Downloads\\Responsive Navbar\\Responsive Navbar"
+		},
+		{
+			"path": "..\\navbar"
 		}
 	],
 	"settings": {}

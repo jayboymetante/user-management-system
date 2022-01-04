@@ -23,11 +23,13 @@ if (loggedin()) {
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
-                    class="fas fa-user-secret me-2"></i>Welcome Admin</div>
+                    class=""></i>Welcome Admin</div>
             <div class="list-group list-group-flush my-3">
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                        class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                        class=""></i>Dashboard</a>
                         <a href="resident_info.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Resident Personal Info</a>
+                        <a href="vaccine_data.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Vaccine Data</a>
+                        <a href="vaccine_stock.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Vaccine Stock Information</a>
                         <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">Log out</a>
             </div>
         </div>
@@ -62,8 +64,18 @@ if (loggedin()) {
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">0</h3>
-                                <p class="fs-5">Registered</p>
+                                <h3 class="fs-2">
+                                    <?php
+                                    require 'connect.php';
+                                    $query="SELECT user_ifo_id FROM user_info ORDER BY user_info_id";
+                                    $result = $mysqli->query($query);
+                                    
+                                  
+                                    
+                                    ?>
+
+                                </h3>
+                                
                             </div>
                             <i class=" border rounded-full secondary-bg p-3"></i>
                         </div>
@@ -102,11 +114,12 @@ if (loggedin()) {
                 </div>
 
                 <div class="row my-5">
-                    <h3 class="fs-4 mb-3">Recent Orders</h3>
+                    <h3 class="fs-4 mb-3">Lets Get Vaccinated</h3>
                     <div class="col">
                         <table class="table bg-white rounded shadow-sm  table-hover">
                         <thead>
                          <tr>
+                            <th>Id</th>
                             <th>First Name</th>
                             <th>Middle Name</th>
                             <th>Last Name</th>
@@ -122,6 +135,9 @@ if (loggedin()) {
             $result = $mysqli->query($query);
             while ($data = $result->fetch_assoc()) {
                 echo "<tr>";
+                echo "<td>";
+                echo "$data[user_info_id]";
+               echo "</td>";
                     echo "<td>";
                         echo "$data[first_name]";
                     echo "</td>";
@@ -149,8 +165,8 @@ if (loggedin()) {
                     
                     
                     echo "<td>";
-                        echo ' <a href="edit.php"><button type="button">Edit</button></a>';
-                        
+                    echo ' <a href="edit.php"><button type="button">Update</button></a>';
+                    
                     echo "</td>";
                 echo "</tr>";
             }
@@ -173,6 +189,7 @@ if (loggedin()) {
         toggleButton.onclick = function () {
             el.classList.toggle("toggled");
         };
+        
     </script>
 </body>
 

@@ -52,115 +52,135 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
-<title>Vaccination Form</title>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title>Document</title>
-    <link rel="stylesheet" href="registration_design.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
-        </style>
-</head>
-<body> 
-    <br> 
-    <a href="login.php"><button type="button">Login</button></a> 
-    <div>
-        <form action"registration.php" method="post">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <img id= "tabogon" src="tabogon logo.png" alt="tabogonlogo">
-                    <img id= "cebu" src="cebulogo.png" alt="cebulogo">
-                    <h1>VACCINE INFORMATION</h1>
-                   <p>Online Registration</p>
-                   <hr class="mb-3"></div>
-                <div class = "insform">
-                   <label for="first_name"><b>First Name</b></label>
-                   <input class="form-control" id="first_name" type="text" name="first_name" required><br>
-
-                   <label for="middlename"><b>Middle Name</b></label>
-                   <input class="form-control" id="middle_name" type="text" name="middle_name" required><br>
-
-                   <label for="lastname"><b>Last Name</b></label>
-                   <input class="form-control" id="last_name" type="text" name="last_name" required> <br>
-                
-                   <label for="gender" ><b>Gender</b></label required>  
-                          <select class="form-control" id="gender"  name="gender">
-                               <option value=""></option>
-                               <option value="male">Male</option>
-                               <option value="female">Female</option>
-                           </select>  
-                    <br>
-                    <label for="age"><b>Age</b></label>
-                    <input class="form-control" id="age" type="text" name="age" required>
-                    <br>
-                    <label for="mobile_number"><b>Mobile Number</b></label>
-                    <input class="form-control" id="mobile_number" type="text" name="mobile_number" required>
-                    <br>
-                  
-                   <label for="email_address"><b>Email Address</b></label>
-                   <input class="form-control" id="email_address" type="email" name="email_address" required>
-                        <br>
-                        <label for="email_address"><b>Birthday</b></label>
-                        <input class="form-control" id="birth_date" type="date" name="birth_date" required>
-                        </br>
-                   <br>
-                   <label for="citizenship" ><b>Citizenship</b></label required>  
-                          <select class="form-control" id="citizenship" name="citizenship">
-                               <option value="filipino">Filipino</option>
-                               <option value="american">American</option>
-                               <option value="british">British</option>
-                           </select>  
-                           <br>
-                           <label for="purok" ><b>Purok</b></label required>  
-                          <select class="form-control" id="purok" name="purok">
-                               <option value=""></option>
-                               <option value="chicago">Chicago</option>
-                               <option value="tabili">Tabili</option>
-                               <option value="gumamela">Gumammela</option>
-                           </select> 
-                           <br>
-                       <label for="address"><b>Address</b></label>
-                       <input class="form-control" id="address" type="text" name="address" required> 
-                       <br>
-                       <label for="civil_status" ><b>Civil Status</b></label required>  
-                          <select class="form-control" id="civil_status" name="civil_status">
-                               <option value=""></option>
-                               <option value="single">Single</option>
-                               <option value="married">Married</option>
-                               <option value="divorced">Divorced</option>
-                               <option value="widowed">Widowed</option>
-                           </select> 
-                           <br>
-                       <label for="weight"><b>Weight</b></label>
-                       <input class="form-control" id="weight" type="text" name="weight" required>
-                       <br>
-                       <label for="height"><b>Height</b></label>
-                       <input class="form-control" id="height" type="text" name="height" required>
-                       <br>
-                       <label for="comorbidities"><b>Comorbidities</b></label>
-                       <input class="form-control"  id="comorbidities" type="text" name="comorbidities" required>
-                       <br>
-                       <br>
-                   
-                   <input class="btn btn-primary" type="submit" id="submitted"  name="create" value="Submit">
-
-                   
-                
-                </div>
-               </div>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Responsive Navigation Menu</title>
+      <link rel="stylesheet" href="registrationdesign.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+      <nav>
+         <div class="logo">
+            Tabogon
+         </div>
+         <input type="checkbox" id="click">
+         <label for="click" class="menu-btn">
+         <i class="fas fa-bars"></i>
+         </label>
+         <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Button</a></li>
+            <li><a href="#">Button</a></li>
+            <li><a href="#">Button</a></li>
+            <li><a href="login.php">Sign in</a></li>
+         </ul>
+      </nav>
+      
+        <div class="user_form">
+            <div class="container">
+                <div class="title">Registration</div>
+                <form action="#">
+                    <div class="user-details">
+                            <div class="input-box">
+                            <span class="details">First Name</span>
+                            <input type="text" id="first_name"  name="first_name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="input-box">
+                                    <span class="details">Middle Name</span>
+                                    <input type="text" id="middle_name"  name="middle_name" placeholder="Enter your middle name" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Last Name</span>
+                                    <input type="text" id="last_name" name="last_name" placeholder="Enter your Last name" required>
+                                </div>
+                            
+                                <div class="input-box">
+                                    <span class="details">Gender</span>
+                                    <input type="text" list="gen" id="gender" name="gender" placeholder="Enter your Gender" required>
+                                    <datalist id="gen">
+                                        <option value="Male">
+                                        <option value="Female">
+                                    </datalist>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Age</span>
+                                    <input type="text" id="age" name="age" placeholder="Enter your Last name" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Mobile Number</span>
+                                    <input type="text" id="mobile_number" name="mobile_number" placeholder="###-###-###-###" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Email Address</span>
+                                    <input type="text" id="email_address" name="email_address" placeholder="(example)@johndoe@gmail.com" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Birthday</span>
+                                    <input type="date" id="birth_date"  name="birth_date"  required> 
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Citizenship</span>
+                                    <input type="text" list="citizen"  id="citizenship" name="citizenship" placeholder="Enter your Citizenship" required>
+                                    <datalist id="citizen">
+                                        <option value="Filipino">
+                                        <option value="American">
+                                        <option value="British">
+                                        </option>
+                                    </datalist>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Purok</span>
+                                    <input type="text" list="prk" id="purok" name="purok" placeholder="Enter your purok" required>
+                                    <datalist id="prk">
+                                        <option value="Chicago">
+                                        <option value="Tabili">
+                                                <option value="Tambis">
+                                            </option>
+                                    </datalist>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Address</span>
+                                    <input type="text"  id="address" name="address"  placeholder="Enter your Address" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Civil Status</span>
+                                    <input type="text" list="civilstatus" id="civil_status" name="civil_status" placeholder="Enter your Status" required>
+                                    <datalist id="civilstatus">
+                                        <option value="Single">
+                                        <option value="Maried">
+                                                <option value="Divorced">
+                                            </option>
+                                    </datalist>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Weight</span>
+                                    <input type="text"  id="weight" name="weight" placeholder="Enter your Weight" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Height</span>
+                                    <input type="text" id="height" name="height" placeholder="Enter your Height" required>
+                                </div>
+                                <div class="input-box">
+                                <span class="details">Comorbidities</span>
+                                <input type="text" list="como" id="comorbidities" name="comorbidities" placeholder="Enter your Comorbidities" required>
+                                <datalist id="como">
+                                    <option value="With Allergy">
+                                    <option value="Without Allergy">
+                                            <option value="Covid 19 history">
+                                        </option>
+                                </datalist>
+                            </div>
+                        </div>
+                            <div class="button">
+                             <input type="submit" id="submitted" name="create"   value="Register">
+                        </div>
+                    </div>  
+                </form>
             </div>
-          </div> 
-        </form> 
-    </div>   
-    
-     </script>
-</body>
+        </div>
+        
+    </body>
 </html>
