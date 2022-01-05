@@ -117,7 +117,11 @@ if (loggedin()) {
 
     <!-- Page Content -->
 
-    <h2>Users List <a href="add.php"><button type="button" >Add</button></a> </h2>
+
+
+    
+    <h2>Users List <a href="add.php"><button type="button" >Add</button></a>  </h2>
+    
          <table class="content-table">
           <thead>
              <tr>
@@ -196,7 +200,8 @@ if (loggedin()) {
                   echo "$data[comorbidities]";
               echo "</td>";
               echo "<td>";
-                   echo ' <a href="delete.php">Delete</a>';
+              echo ' <a href="delete.php?user_info_id='.$data["user_info_id"].'">Delete';
+              echo ' <a href="edit.php?user_info_id='.$data["user_info_id"].'">Update';
                   
               echo "</td>";
           echo "</tr>";
