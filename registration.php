@@ -1,7 +1,5 @@
 <?php
-if (!isset($_SESSION)) { session_start(); }
 require 'connect.php';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST['first_name']) 
       && isset($_POST['middle_name'])
@@ -18,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       && isset($_POST['weight'])
       && isset($_POST['height'])
       && isset($_POST['comorbidities'])){
-      
 
 
 
@@ -38,12 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                  .$mysqli->real_escape_string($_POST['weight'])."','"
                  .$mysqli->real_escape_string($_POST['height'])."','"
                  .$mysqli->real_escape_string($_POST['comorbidities'])."')";
-                 
-                 
 
         if ($mysqli->query($sql) === TRUE) {
-            echo "You Have been Registered";
-       
+        echo "New record created successfully";
         } 
         else{
          die("failed: " . $mysqli->error);
@@ -52,17 +46,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <title>Responsive Navigation Menu</title>
-      <link rel="stylesheet" href="registrationdesign.css">
+<html>
+<head>
+<title>Register</title>
+<link rel="stylesheet" href="registrationdesign.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-   <body>
-      <nav>
+</head>
+<body>
+<nav>
          <div class="logo">
             Tabogon
          </div>
@@ -78,11 +70,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <li><a href="login.php">Sign in</a></li>
          </ul>
       </nav>
-      
-        <div class="user_form">
+    <div>
+        
+        
+        <div class="user_form" >
             <div class="container">
                 <div class="title">Registration</div>
-                <form action="#">
+                <form action="#"  method="post" > 
                     <div class="user-details">
                             <div class="input-box">
                             <span class="details">First Name</span>
@@ -181,6 +175,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </form>
             </div>
         </div>
-        
     </body>
 </html>
+

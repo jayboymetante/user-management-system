@@ -165,7 +165,7 @@ if (loggedin()) {
                     
                     
                     echo "<td>";
-                    echo ' <a href="edit.php"><button type="button">Update</button></a>';
+                    
                     
                     echo "</td>";
                 echo "</tr>";
