@@ -93,11 +93,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             
                                 <div class="input-box">
                                     <span class="details">Gender</span>
-                                    <input type="text" list="gen" id="gender" name="gender" placeholder="Enter your Gender" required>
-                                    <datalist id="gen">
-                                        <option value="Male">
-                                        <option value="Female">
-                                    </datalist>
+                                    <select  class="details" id="gen"name="gender" >
+                                            <option value="">---Enter your gender---</option>
+                                            <option value="male">male</option>
+                                            <option value="female">female</option>
+                                    </select>
                                 </div>
                                 <div class="input-box">
                                     <span class="details">Age</span>

@@ -61,20 +61,28 @@ if (loggedin()) {
             <div class="container-fluid px-4">
             <div class="row my-5">
                     <h3 class="fs-4 mb-3">
-                    <a href="vaccine_stock_data.php">Add Vaccine Stock</a>
+                        <?php
+                                $query = "SELECT * FROM  user_info  WHERE user_info_id='" . $_GET["user_info_id"] . "'";
+                                $result = $mysqli->query($query);
+                                while ($data = $result->fetch_assoc()) {
+                                    echo "$data[first_name] "."$data[middle_name] "."$data[last_name]";
+                                    echo ' <a href="vaccine_data.php?user_info_id='.$data["user_info_id"].'">Add Vaccine Data</a>';
+                                }
+                        ?>
                     </h3>      
                     <div class="col">
                         <table class="table bg-white rounded shadow-sm  table-hover">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>Vaccine Brand</th>
-                            <th>Stock Quantity</th>
-                            <th>Date Recieved</th> 
+                            <th>Id</th>
+                            <th>Vaccine Administered</th>
+                            <th>Date Administered</th>
+                            <th>Number of Dosage</th>
+                            <th>Side Effects</th> 
                         </tr>
                     </thead>  
                             <?php
-                            $query = "SELECT * FROM  vaccine_stocks";
+                            $query = "SELECT * FROM  vaccine_data  WHERE user_info_id='" . $_GET["user_info_id"] . "'";
                             $result = $mysqli->query($query);
                             $index=0;
                             while ($data = $result->fetch_assoc()) {
@@ -82,15 +90,17 @@ if (loggedin()) {
                                 echo ++$index;
                             echo "</td>";
                             echo "<td>";
-                                echo "$data[vaccine_brand]";
+                                echo "$data[vaccine_administered]";
                             echo "</td>";
                             echo "<td>";
-                                echo "$data[stock_quantity]";
+                                echo "$data[date_administered]";
                             echo "</td>";
                             echo "<td>";
-                                echo "$data[date_recieved]";
+                                echo "$data[number_of_dosage]";
                             echo "</td>";
-                            
+                            echo "<td>";
+                                echo "$data[side_effects]";
+                            echo "</td>"; 
                         echo "</tr>";           
                             }
                             ?>   

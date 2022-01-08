@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  } 
+  table, td, th {
+    border: 1px solid black;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 150%;
+  }
+  th, td {
+    text-align: left;
+    padding: 12px;
+    
+  }
+  .searchbar{
+    text-align: center;
+  }

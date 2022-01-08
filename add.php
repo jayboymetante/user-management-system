@@ -129,15 +129,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input class="form-control"  id="comorbidities" type="text" name="comorbidities" required>
 
 
-
-                    
-                    
-
-                    
-                    
-                     
-                    
-
                     <hr class="mb-3">
                     <input class="btn btn-primary" type="submit" id="submitted" name="create" value="ADD">
                 </div>

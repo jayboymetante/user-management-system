@@ -27,8 +27,7 @@ if (loggedin()) {
             <div class="list-group list-group-flush my-3">
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class=""></i>Dashboard</a>
-                        <a href="resident_info.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Resident Personal Info</a>
-                        <a href="vaccine_data.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Vaccine Data</a>
+                        <a href="index.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Residents</a>
                         <a href="vaccine_stock.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Vaccine Stock Information</a>
                         <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">Log out</a>
             </div>
@@ -67,8 +66,7 @@ if (loggedin()) {
                                 <h3 class="fs-2">
                                     <?php
                                     require 'connect.php';
-                                    $query="SELECT user_ifo_id FROM user_info ORDER BY user_info_id";
-                                    $result = $mysqli->query($query);
+                                    
                                     
                                   
                                     
@@ -114,7 +112,7 @@ if (loggedin()) {
                 </div>
 
                 <div class="row my-5">
-                    <h3 class="fs-4 mb-3">Lets Get Vaccinated</h3>
+                    <h3 class="fs-4 mb-3">Get Vaccine</h3>
                     <div class="col">
                         <table class="table bg-white rounded shadow-sm  table-hover">
                         <thead>
@@ -165,8 +163,8 @@ if (loggedin()) {
                     
                     
                     echo "<td>";
-                    
-                    
+                    echo ' <a href="vaccine_data.php?user_info_id='.$data["user_info_id"].'">Edit';
+                    echo ' <a href="vaccine_data_list.php?user_info_id='.$data["user_info_id"].'">Vaccine Data';
                     echo "</td>";
                 echo "</tr>";
             }

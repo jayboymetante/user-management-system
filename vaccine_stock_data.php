@@ -2,25 +2,23 @@
 require 'connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['user_info_id']) 
-      && isset($_POST['vaccine_administered'])
-      && isset($_POST['date_administered'])
-      && isset($_POST['number_of_dosage'])
-      && isset($_POST['side_effects'])){
+    if(
+       isset($_POST['vaccine_brand'])
+      && isset($_POST['date_recieved'])
+      && isset($_POST['stock_quantity'])){
 
 
 
-        $sql = "INSERT INTO vaccine_data (user_info_id,vaccine_administered,date_administered,number_of_dosage,side_effects) 
-        VALUES('".$mysqli->real_escape_string($_POST['user_info_id'])."', '"
-                 .$mysqli->real_escape_string($_POST['vaccine_administered'])."','"
-                 .$mysqli->real_escape_string($_POST['date_administered'])."','"
-                 .$mysqli->real_escape_string($_POST['number_of_dosage'])."','"
-                 .$mysqli->real_escape_string($_POST['side_effects'])."')";
+        $sql = "INSERT INTO vaccine_stocks (vaccine_brand,date_recieved,stock_quantity) 
+        VALUES('"
+                 .$mysqli->real_escape_string($_POST['vaccine_brand'])."','"
+                 .$mysqli->real_escape_string($_POST['date_recieved'])."','"
+                 .$mysqli->real_escape_string($_POST['stock_quantity'])."')";
                  
 
         if ($mysqli->query($sql) === TRUE) {
         echo "New record created successfully";
-        header("Location: vaccine_data_list.php?user_info_id=".$_POST['user_info_id']."");
+        header("Location:vaccine_stock.php");
         } 
         else{
          die("failed: " . $mysqli->error);
@@ -82,28 +80,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </nav>
 
             <div class="container-fluid px-4">
-                <form action"vaccine_data.php" method="post">
+                <form action"vaccine_stock_data.php" method="post">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-3">
                                 
                                 <hr class="mb-3">
-                                        <input type="hidden" name="user_info_id" value="<?php echo $_GET["user_info_id"]; ?>"> 
-                                        <label for="vaccine_administered"><b>Vaccine Administered</b></label>
-                                        <select class="form-control" name="vaccine_administered" id="vaccine">
+                                        
+                                        <label for="vaccine_brand"><b>Vaccine Brand</b></label>
+                                        <select class="form-control" name="vaccine_brand" id="vaccine">
                                             <option value="">--- Choose Vaccine---</option>
                                             <option value="Astrazeneca">Astrazeneca</option>
                                             <option value="Phizer">Phizer</option>
                                             <option value="Sinovac">Sinovac</option>
                                             <option value="Astra">Astra</option>
                                         </select>
-                                        <label for="date_administered"><b>Date Administered</b></label>
-                                        <input class="form-control" id="date_administered" type="date" name="date_administered" required>
+                                        <label for="number_of_dosage"><b>Stock Quantity</b></label>
+                                        <input class="form-control" id="stock_quantity" type="text" name="stock_quantity" required>
+                                        <label for="date_recieved"><b>Date Recieved</b></label>
+                                        <input class="form-control" id="date_recieved" type="date" name="date_recieved" required>
 
-                                        <label for="number_of_dosage"><b>Number of Dosage</b></label>
-                                        <input class="form-control" id="number_of_dosage" type="text" name="number_of_dosage" required>
-                                        <label for="side_effects"><b>Side Effects</b></label>
-                                        <input class="form-control" id="side_effects" type="text" name="side_effects" required>  
+                                        
+                                        
                                     <hr class="mb-3">
                                 <input class="btn btn-primary" type="submit" id="submitted" name="create" value="ADD">
                             </div>

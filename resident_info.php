@@ -8,47 +8,24 @@ if (loggedin()) {
     <!DOCTYPE html>
     <html>
 <head>
+<link rel="stylesheet" href="resident_info_design.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-    *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-} 
-table, td, th {
-  border: 1px solid black;
-}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-table {
-  border-collapse: collapse;
-  width: 150%;
-}
-th, td {
-  text-align: left;
-  padding: 12px;
-}
-</style>
 </head>
-          
+<form action="" method="get">
+    <div class="searchbar">
+        <input type="text" class="searchbar__input" name="q" placeholder="Search Data">
+        <button type="submit" class="searchbar__button">
+            <i class="material-icons">search</i>
+        </button>
+    </div>
     <body>
 
     <!-- Page Content -->
-    <?php 
-
-    require 'connect.php';
-    if(isset($_GET['search'])){
-    $searchKey = $_GET['search'];
-    $sql = "SELECT * FROM user_info WHERE name LIKE '%$searchKey%'";
-    }else
-    $sql = "SELECT * FROM user_info";
-    $result = $mysqli->query($sql);
-?>
-
-    
-    
+   
             <table class="content-table">
+                
             <thead>
                 <tr>
                     <th>Id</th>
@@ -130,28 +107,15 @@ th, td {
                 echo ' <a href="edit.php?user_info_id='.$data["user_info_id"].'">Update';
                     
                 echo "</td>";
-            echo "</tr>";
-
-                
-                
-                
-                    
-                
-                    
-                        
-                        
+            echo "</tr>";           
                 }
                 ?>   
             </table>  
-    </form>
+ 
         
     </div>
-
-
-
-
-        </div>
-        
+ </div>
+   
     </body>
     </html>
 <?php } else {
