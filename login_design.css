@@ -1,133 +1,109 @@
-.ins
-{
-    position:absolute;
-    background-color: rgba(255, 255, 255, 0.644);
-    height: 50vh;
-    width: 100vh;
-    align-items: center;
-    top: 50%;
-    left: 50%;
-    border: 1px solid;
-    border-color: rgba(0, 0, 0, 0.466);
-    transform: translate(-50%, -50%);
-    border-radius: 30px;
-    padding: 10px;
-    box-shadow: 5px 10px 8px 0px #888888;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
 }
-h1
-{
-    text-align: center;
-    font-family: 'Comfortaa', cursive;
+body{
+  background: #fff;
+  overflow: hidden;
 }
-input
-{
-    margin: 10px;
-    padding: 6px;
-    font-size: 15px;    
-    border-radius: 30px;
-    border-color: #02b16b;
-    background-color: rgba(255, 255, 255, 0.445);
-    font-family: 'Comfortaa', cursive;
-    text-align: center;
-    transform: translate(-50%, -50%);
-    transition: 0.5s;
+::selection{
+  background: rgba(26,188,156,0.3);
 }
-input:hover
-{
-    background-color: rgba(184, 183, 183, 0.479);
+.container{
+  max-width: 440px;
+  padding: 0 20px;
+  margin: 170px auto;
 }
-label
-{
-    margin-left: 20%;
-    transform: translate(-50%, -50%);
-    font-family: 'Comfortaa', cursive;
-    width: 200px; 
-    font-size: 20px;    
-    display: inline-block;
+.wrapper{
+  width: 100%;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 4px 6px 10px 4px rgba(0,0,0,0.1);
 }
-.vec1
-{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    overflow:hidden;
+.wrapper .title{
+  height: 90px;
+  background: #02b16b;
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-img
-{
-    top: 0;
-    left: 0;
-    position:absolute;
-    height: 100%;
-    width: 100%;
+.wrapper form{
+  padding: 30px 25px 25px 25px;
 }
-#btnsub
-{
-    width: 150px;
-    margin-left: 45%;
-    cursor: pointer;
-    transition: 1s;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.wrapper form .row{
+  height: 45px;
+  margin-bottom: 15px;
+  position: relative;
 }
-#btnsub:hover
-{
-    background-color: #02b16b;
+.wrapper form .row input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 60px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
-.vec1
-{
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    width: 40%;
-    height: 100%;
-    background-color: #02b16ba4;
-    overflow: hidden;
+form .row input:focus{
+  border-color: #02b16b;
+  box-shadow: inset 0px 0px 2px 2px rgba(26,188,156,0.25);
 }
-.vec2
-{
-    position: absolute;
-    left: -5px;
-    width: 100%;
-    height: 100px;
-    background-color: #43fff6de;
-    overflow: hidden;
+form .row input::placeholder{
+  color: #999;
 }
-.vec3
-{
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    width: 20%;
-    height: 100%;
-    background-color: #006d41a4;
-    overflow: hidden;
+.wrapper form .row i{
+  position: absolute;
+  width: 47px;
+  height: 100%;
+  color: #fff;
+  font-size: 18px;
+  background: #02b16b;
+  border: 1px solid #02b16b;
+  border-radius: 5px 0 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.vec4
-{
-    position: absolute;
-    top: 50px;
-    left: -5px;
-    width: 100%;
-    height: 105px;
-    background-color: #009e965b;
-    overflow: hidden;
+.wrapper form .pass{
+  margin: -8px 0 20px 0;
 }
-#cblg
-{
-    width: 150px;
-    height: 150px;
-    position: absolute;
-    margin-left:10%;
-    top: 1.5%;
+.wrapper form .pass a{
+  color: #02b16b;
+  font-size: 17px;
+  text-decoration: none;
 }
-#tbgnlg
-{
-    width: 150px;
-    height: 150px;
-    position: absolute;
-    margin-left:80%;
-    top: 1.5%;
+.wrapper form .pass a:hover{
+  text-decoration: underline;
+}
+.wrapper form .button input{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  padding-left: 0px;
+  background: #02b16b;
+  border: 1px solid #02b16b;
+  cursor: pointer;
+}
+form .button input:hover{
+  background: #02b16b;
+}
+.wrapper form .signup-link{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 17px;
+}
+.wrapper form .signup-link a{
+  color: #02b16b;
+  text-decoration: none;
+}
+form .signup-link a:hover{
+  text-decoration: underline;
 }

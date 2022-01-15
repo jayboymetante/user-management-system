@@ -5,16 +5,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST['user_info_id']) 
       && isset($_POST['vaccine_administered'])
       && isset($_POST['date_administered'])
-      && isset($_POST['number_of_dosage'])
       && isset($_POST['side_effects'])){
 
 
 
-        $sql = "INSERT INTO vaccine_data (user_info_id,vaccine_administered,date_administered,number_of_dosage,side_effects) 
+        $sql = "INSERT INTO vaccine_data (user_info_id,vaccine_administered,date_administered,side_effects) 
         VALUES('".$mysqli->real_escape_string($_POST['user_info_id'])."', '"
                  .$mysqli->real_escape_string($_POST['vaccine_administered'])."','"
                  .$mysqli->real_escape_string($_POST['date_administered'])."','"
-                 .$mysqli->real_escape_string($_POST['number_of_dosage'])."','"
                  .$mysqli->real_escape_string($_POST['side_effects'])."')";
                  
 
@@ -49,8 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class=""></i>Welcome Admin</div>
             <div class="list-group list-group-flush my-3">
-                <a href="index.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Residents</a>
-   
+            <a href="index.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Home</a>
                 <a href="vaccine_stock.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Vaccine Stock Information</a>
                 <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">Log out</a>
             </div>
@@ -92,18 +89,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <label for="vaccine_administered"><b>Vaccine Administered</b></label>
                                         <select class="form-control" name="vaccine_administered" id="vaccine">
                                             <option value="">--- Choose Vaccine---</option>
-                                            <option value="Astrazeneca">Astrazeneca</option>
-                                            <option value="Phizer">Phizer</option>
-                                            <option value="Sinovac">Sinovac</option>
-                                            <option value="Astra">Astra</option>
+                                            <option value="astrazeneca">AstraZeneca</option>
+                                            <option value="pfizer">Pfizer</option>
+                                            <option value="sinovac">Sinovac</option>
+                                            <option value="moderna">Moderna</option>
+                                            <option value="johnson">Johnson</option>
+                                            <option value="sputnik">Sputnik</option>
                                         </select>
                                         <label for="date_administered"><b>Date Administered</b></label>
                                         <input class="form-control" id="date_administered" type="date" name="date_administered" required>
-
-                                        <label for="number_of_dosage"><b>Number of Dosage</b></label>
-                                        <input class="form-control" id="number_of_dosage" type="text" name="number_of_dosage" required>
-                                        <label for="side_effects"><b>Side Effects</b></label>
-                                        <input class="form-control" id="side_effects" type="text" name="side_effects" required>  
+                                        <label for="number_of_dosage"><b>Side Effects</b></label>
+                                        <textarea id="side_effects" name="side_effects" rows="4" cols="50">
+                                        </textarea>
                                     <hr class="mb-3">
                                 <input class="btn btn-primary" type="submit" id="submitted" name="create" value="ADD">
                             </div>

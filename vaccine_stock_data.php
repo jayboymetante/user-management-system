@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class=""></i>Welcome Admin</div>
             <div class="list-group list-group-flush my-3">
-                <a href="index.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Residents</a>
+                <a href="index.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Home</a>
    
                 <a href="vaccine_stock.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Vaccine Stock Information</a>
                 <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">Log out</a>
@@ -89,11 +89,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         
                                         <label for="vaccine_brand"><b>Vaccine Brand</b></label>
                                         <select class="form-control" name="vaccine_brand" id="vaccine">
-                                            <option value="">--- Choose Vaccine---</option>
-                                            <option value="Astrazeneca">Astrazeneca</option>
-                                            <option value="Phizer">Phizer</option>
-                                            <option value="Sinovac">Sinovac</option>
-                                            <option value="Astra">Astra</option>
+                                        <option value="">--- Choose Vaccine---</option>
+                                            <option value="astrazeneca">AstraZeneca</option>
+                                            <option value="pfizer">Pfizer</option>
+                                            <option value="sinovac">Sinovac</option>
+                                            <option value="moderna">Moderna</option>
+                                            <option value="johnson">Johnson</option>
+                                            <option value="sputnik">Sputnik</option>
                                         </select>
                                         <label for="number_of_dosage"><b>Stock Quantity</b></label>
                                         <input class="form-control" id="stock_quantity" type="text" name="stock_quantity" required>

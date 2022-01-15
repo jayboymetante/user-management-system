@@ -14,6 +14,7 @@ if(count($_POST)>0) {
     citizenship='" . $_POST['citizenship'] . "',
     purok='" . $_POST['purok'] . "',
     address='" . $_POST['address'] . "',
+    civil_status='" . $_POST['civil_status'] . "',
     weight='" . $_POST['weight'] . "',
     height='" . $_POST['height'] . "',
     comorbidities='" . $_POST['comorbidities'] . "'
@@ -58,56 +59,73 @@ if(count($_POST)>0) {
                            <span class="details">Last Name</span> 
                            <input type="text" name="last_name" class="txtField" value="<?php echo $row['last_name']; ?>">
                         </div>
-                        <div class="input-box">           
-                            <span class="details">Gender</span> 
-                            <input type="text" name="gender" class="txtField" value="<?php echo $row['gender']; ?>">
-                        </div>  
-                        <div class="input-box">           
-                            <span class="details">Age</span> 
-                            <input type="text" name="age" class="txtField" value="<?php echo $row['age']; ?>">
-                        </div>  
-                        <div class="input-box">           
-                            <span class="details">Mobile</span> 
-                            <input type="text" name="mobile_number" class="txtField" value="<?php echo $row['mobile_number']; ?>">
-                        </div>
-                        <div class="input-box">           
-                            <span class="details">Email Address</span> 
-                            <input type="text" name="email_address" class="txtField" value="<?php echo $row['email_address']; ?>">
-                        </div>
-                        <div class="input-box">
+                              <div class="input-box">
+                                    <span class="details">Gender</span>
+                                    <select class="select" type="text" value="<?php echo $row['gender']; ?>" name="gender" id="gender"  >
+                                            
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Age</span>
+                                    <input type="text" id="age" name="age" placeholder="Enter your age" value="<?php echo $row['age']; ?>" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Mobile Number</span>
+                                    <input type="text" id="mobile_number" name="mobile_number"  value="<?php echo $row['mobile_number']; ?>" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Email</span>
+                                    <input type="text" id="email_address" name="email_address"  value="<?php echo $row['email_address']; ?>" required>
+                                </div>
+                                <div class="input-box">
                                     <span class="details">Birthday</span>
-                                    <input type="date" name="birth_date"  class="txtField" value="<?php echo $row['birth_date']; ?>">
-                        </div> 
-                        <div class="input-box">           
-                            <span class="details">Citizenship</span> 
-                            <input type="text" name="citizenship" class="txtField" value="<?php echo $row['citizenship']; ?>">
-                        </div>
-                        <div class="input-box">
+                                    <input type="date" id="birth_date" name="birth_date"  value="<?php echo $row['birth_date']; ?>" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Citizenship</span>
+                                    <select class="select" type="text" value="<?php echo $row['citizenship']; ?>"  name="citizenship" id="citizenship">
+                                            
+                                            <option value="filipino">Filipino</option>
+                                            <option value="american">American</option>
+                                        </select>
+                                </div>
+                                <div class="input-box">
                                     <span class="details">Purok</span>
-                                    <input type="text" list="prk"  name="purok" class="txtField" value="<?php echo $row['purok']; ?>">
-                                    <datalist id="prk">
-                                        <option value="Chicago">
-                                        <option value="Tabili" >
-                                                <option value="Tambis">
-                                            </option>
-                                    </datalist> 
-                        </div>
-                        <div class="input-box">           
-                            <span class="details">Address</span> 
-                            <input type="text" name="address" class="txtField" value="<?php echo $row['address']; ?>">
-                        </div>
-                        <div class="input-box">           
-                            <span class="details">Weight</span> 
-                            <input type="text" name="weight" class="txtField" value="<?php echo $row['weight']; ?>">
-                        </div>
-                        <div class="input-box">           
-                            <span class="details">Height</span> 
-                            <input type="text" name="height" class="txtField" value="<?php echo $row['height']; ?>">
-                        </div>  
-                        <div class="input-box">           
-                            <span class="details">Comorbidities</span> 
-                            <input type="text" name="comorbidities" class="txtField" value="<?php echo $row['comorbidities']; ?>">
-                        </div>                                                                                                        
+                                    <select class="select" type="text" value="<?php echo $row['purok']; ?>" name="purok" id="purok"  >
+                                            <option value="hawaii">Hawaii</option>
+                                            <option value="bombil">Bombil</option>
+                                        </select>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Address</span>
+                                    <input type="text" id="address" name="address"  value="<?php echo $row['address']; ?>" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Civil Status</span>
+                                    <select class="select" type="text"  name="civil_status" value="<?php echo $row['civil_status']; ?>" id="civil_status">
+                                            <option value="single">Single</option>
+                                            <option value="married">Married</option>
+                                            <option value="divorced">Divorced</option>
+                                        </select>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Weight</span>
+                                    <input type="text"  id="weight" name="weight" value="<?php echo $row['weight']; ?>" placeholder="Enter  Weight" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Height</span>
+                                    <input type="text" id="height" name="height" value="<?php echo $row['height']; ?>"  placeholder="Enter  Height" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Comorbidities</span>
+                                    <select class="select" type="text" value="<?php echo $row['comorbidities']; ?>"    name="comorbidities" id="comorbidities">
+                                            <option value="covid 19 history">Covid 19 history</option>
+                                            <option value="with allergy">With Allergy</option>
+                                            <option value="without allergy">Without Allergy</option>
+                                        </select>
+                                </div>
                         <div class="button">
                             <input type="submit" id="submitted" name="create"   value="Update">
                         </div>

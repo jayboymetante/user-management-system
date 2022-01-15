@@ -26,9 +26,9 @@ if (loggedin()) {
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class=""></i>Welcome Admin</div>
             <div class="list-group list-group-flush my-3">
-                <a href="index.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Residents</a>
-   
-                <a href="vaccine_stock.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Vaccine Stock Information</a>
+            <a href="index.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Home</a>
+
+                <a href="vaccine_stock.php" class="list-group-item list-group-item-action bg-transparent active second-text fw-bold">Vaccine Stock Information</a>
                 <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">Log out</a>
             </div>
         </div>
@@ -61,7 +61,16 @@ if (loggedin()) {
             <div class="container-fluid px-4">
             <div class="row my-5">
                     <h3 class="fs-4 mb-3">
-                    <a href="vaccine_stock_data.php">Add Vaccine Stock</a>
+                    <div class="container">
+                            <div class="search_wrap search_wrap_1">
+                                    <div class="search_box">
+                                       <input type="text" class="input" placeholder="search...">
+                                        <div class="btn btn_common">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                            </div>
+                        </div>
+                    <a href="vaccine_stock_data.php"><button class="btn btn-primary">Add Vaccine Stock</button></a>
                     </h3>      
                     <div class="col">
                         <table class="table bg-white rounded shadow-sm  table-hover">

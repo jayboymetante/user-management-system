@@ -4,20 +4,81 @@ require 'connect.php';
 
 if (loggedin()) {
 
-    echo   'You\'re Log in, ' . $_SESSION['username'] . ''; ?>
-    <!DOCTYPE html>
+    echo   'You\'re Log in, ' . $_SESSION['username'] . '';
+    $query = "SELECT COUNT(vaccine_data_id) AS number_of_dosage FROM vaccine_data";
+    $result = $mysqli->query($query);
+    $data = $result->fetch_assoc();
+    $number_of_dosage_administered=$data["number_of_dosage"];
+
+    $query = "SELECT SUM(stock_quantity) AS stock_quantity FROM vaccine_stocks";
+    $result = $mysqli->query($query);
+    $data = $result->fetch_assoc();
+    $stock_quantity=$data["stock_quantity"];
+
+    $query = "SELECT SUM(stock_quantity) AS stock_quantity_per_vaccine,vaccine_brand FROM  vaccine_stocks GROUP BY vaccine_brand ORDER BY vaccine_brand";
+    $result = $mysqli->query($query);
+    $vaccine_stock = [
+        'astrazenca'=> 0,
+        'johnson'=> 0,
+        'moderna'=> 0,
+        'sinovac'=> 0,
+        'sputnik'=> 0,
+        'pfizer'=> 0,
+    ];
+    while  ($data = $result->fetch_assoc()){
+        $vaccine_stock[$data['vaccine_brand']] = $data['stock_quantity_per_vaccine'];
+    }
+
+    $query = "SELECT COUNT(vaccine_data_id) AS number_of_dosage,vaccine_administered FROM vaccine_data GROUP BY vaccine_administered ORDER BY vaccine_administered ";
+    $result = $mysqli->query($query);
+    $vaccine_administered = [
+        'astrazeneca'=> 0,
+        'johnson'=> 0,
+        'moderna'=> 0,
+        'sinovac'=> 0,
+        'sputnik'=> 0,
+        'pfizer'=> 0,
+    ];
+    while  ($data = $result->fetch_assoc()){
+        $vaccine_administered[$data['vaccine_administered']] = $data['number_of_dosage'];
+    }
+
+    $query = "SELECT COUNT(user_info_id) AS number_of_user FROM user_info";
+    $result = $mysqli->query($query);
+    $data = $result->fetch_assoc();
+    $number_of_user=$data["number_of_user"];
+
+    $query = "SELECT  COUNT(DISTINCT user_info.user_info_id) As number_of_unvaccinated  FROM user_info LEFT JOIN vaccine_data ON user_info.user_info_id = vaccine_data.user_info_id WHERE vaccine_data.vaccine_data_id is  Null";
+    $result = $mysqli->query($query);
+    $data = $result->fetch_assoc();
+    $number_of_unvaccinated=$data["number_of_unvaccinated"];
+
+    $query = "SELECT  COUNT(DISTINCT user_info.user_info_id) As number_of_vaccinated  FROM user_info LEFT JOIN vaccine_data ON user_info.user_info_id = vaccine_data.user_info_id WHERE vaccine_data.vaccine_data_id is Not Null";
+    $result = $mysqli->query($query);
+    $data = $result->fetch_assoc();
+    $number_of_vaccinated=$data["number_of_vaccinated"];
+    
+    $search_data="";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST['search_data']) ){
+            $search_data=$_POST['search_data'];
+        }
+    }
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+    
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="index_style.css" />
     <title>Admin Dashboard</title>
 </head>
-
 <body>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
@@ -25,9 +86,9 @@ if (loggedin()) {
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class=""></i>Welcome Admin</div>
             <div class="list-group list-group-flush my-3">
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                        class=""></i>Dashboard</a>
-                        <a href="index.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Residents</a>
+                <a href="index.php" class="list-group-item list-group-item-action bg-transparent active second-text fw-bold"><i
+                        class=""></i>Home</a>
+                        <a href="resident_info.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Residents Full Info</a>
                         <a href="vaccine_stock.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Vaccine Stock Information</a>
                         <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">Log out</a>
             </div>
@@ -60,30 +121,15 @@ if (loggedin()) {
 
             <div class="container-fluid px-4">
                 <div class="row g-3 my-2">
-                    <div class="col-md-3">
+                <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
                                 <h3 class="fs-2">
                                     <?php
-                                    require 'connect.php';
-                                    
-                                    
-                                  
-                                    
+                                       echo $number_of_user;
                                     ?>
-
                                 </h3>
-                                
-                            </div>
-                            <i class=" border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">0</h3>
-                                <p class="fs-5">Vaccine Stocks</p>
+                                <p class="fs-5">Registered</p>
                             </div>
                             <i
                                 class=" primary-text border rounded-full secondary-bg p-3"></i>
@@ -93,7 +139,26 @@ if (loggedin()) {
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">0</h3>
+                                <h3 class="fs-2">
+                                    <?php
+                                       echo $number_of_dosage_administered."/". $stock_quantity;
+                                    ?>
+                                </h3>
+                                <p class="fs-5"> Total Vaccine Stocks</p>
+                            </div>
+                            <i
+                                class=" primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">
+                                <?php
+                                       echo $number_of_vaccinated;
+                                    ?>
+                                </h3>
                                 <p class="fs-5">Vaccinated</p>
                             </div>
                             <i class="primary-text border rounded-full secondary-bg p-3"></i>
@@ -103,39 +168,136 @@ if (loggedin()) {
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">0</h3>
+                                <h3 class="fs-2">
+                                <?php
+                                       echo $number_of_unvaccinated;
+                                    ?>
+                                </h3>
                                 <p class="fs-5">Unvaccinated</p>
                             </div>
                             <i class=" primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">
+                                <?php
+                                       echo $vaccine_administered['astrazeneca']."/". $vaccine_stock['astrazeneca'];
+                                    ?>
+                                </h3>
+                                <p class="fs-5">AstraZeneca</p>
+                            </div>
+                            <i class=" primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">
+                                <?php
+                                       echo $vaccine_administered['johnson']."/". $vaccine_stock['johnson'];
+                                    ?>
+                                </h3>
+                                <p class="fs-5">Johnson</p>
+                            </div>
+                            <i class=" primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">
+                                <?php
+                                        echo $vaccine_administered['moderna']."/". $vaccine_stock['moderna'];
+                                    ?>
+                                </h3>
+                                <p class="fs-5">Moderna</p>
+                            </div>
+                            <i class=" primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">
+                                <?php
+                                        echo $vaccine_administered['pfizer']."/". $vaccine_stock['pfizer'];
+                                    ?>
+                                </h3>
+                                <p class="fs-5">Pfizer</p>
+                            </div>
+                            <i class=" primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">
+                                <?php
+                                        echo $vaccine_administered['sinovac']."/".$vaccine_stock['sinovac'];
+                                    ?>
+                                </h3>
+                                <p class="fs-5">Sinovac</p>
+                            </div>
+                            <i class=" primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2">
+                                <?php
+                                        echo $vaccine_administered['sputnik']."/".$vaccine_stock['sputnik'];
+                                    ?>
+                                </h3>
+                                <p class="fs-5">Sputnik</p>
+                            </div>
+                            <i class=" primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+                    
                 </div>
-
                 <div class="row my-5">
                     <h3 class="fs-4 mb-3">Get Vaccine</h3>
+                       
+                                <form action="/user-management-system/index.php" method="POST">
+                                    <input type="text" name="search_data" value="<?php echo $search_data ?>" class="input" placeholder="search...">
+                                    <button type="submit">
+                                        Search
+                                    </button>
+                                    <button >
+                                        <a href="/user-management-system/index.php">Clear</a>
+                                    </button>
+                                    <br>
+                                    
+                                </form> 
                     <div class="col">
                         <table class="table bg-white rounded shadow-sm  table-hover">
                         <thead>
                          <tr>
-                            <th>Id</th>
+                            <th></th>
+                            <th>Vaccine Data</th>
                             <th>First Name</th>
                             <th>Middle Name</th>
                             <th>Last Name</th>
                             <th>Contact</th>
-                            <th>Birthday</th>
                             <th>Address</th>
+                            <th>Number of dosage</th>
                             <th>Action</th>  
-                            
                         </thead>
-                          
                         <?php
-            $query = "SELECT * FROM  user_info";
+            $query = "SELECT user_info.*,COUNT(vaccine_data.vaccine_data_id) As number_of_dosage FROM user_info LEFT JOIN vaccine_data ON user_info.user_info_id = vaccine_data.user_info_id WHERE  CONCAT(user_info.first_name, ' ', user_info.middle_name, ' ', user_info.last_name   ) LIKE '%$search_data%' group by user_info.user_info_id   ";
             $result = $mysqli->query($query);
+            $index=0;
             while ($data = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>";
-                echo "$data[user_info_id]";
-               echo "</td>";
+                    echo "<td>";
+                    echo ++$index;
+                    echo "</td>";
+                    echo "<td>";
+                    echo ' <a href="vaccine_data_list.php?user_info_id='.$data["user_info_id"].'"><button class="btn btn-primary">Vaccine Data</button>';
+                    echo "</td>";
                     echo "<td>";
                         echo "$data[first_name]";
                     echo "</td>";
@@ -151,20 +313,17 @@ if (loggedin()) {
                         echo "$data[mobile_number]";
                     echo "</td>";
                     
-                    echo "<td>";
-                        echo "$data[birth_date]";
-                    echo "</td>";
+                    
                     
                     
                     echo "<td>";
                         echo "$data[address]";
                     echo "</td>";
-                    
-                    
-                    
                     echo "<td>";
-                    echo ' <a href="vaccine_data.php?user_info_id='.$data["user_info_id"].'">Edit';
-                    echo ' <a href="vaccine_data_list.php?user_info_id='.$data["user_info_id"].'">Vaccine Data';
+                       echo "$data[number_of_dosage]";
+                    echo "</td>";
+                    echo "<td>";
+                    echo ' <a href="edit.php?user_info_id='.$data["user_info_id"].'"><button>Edit</button';
                     echo "</td>";
                 echo "</tr>";
             }

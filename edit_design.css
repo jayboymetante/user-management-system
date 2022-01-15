@@ -65,7 +65,12 @@ form .input-box span.details{
 .user-details .input-box input:valid{
 border-color: #02b16b;
 }
-
+.select{
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #02b16b;
+  padding: 1px;
+}
 
 form .button{
   height: 45px;

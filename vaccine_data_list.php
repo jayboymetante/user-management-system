@@ -26,8 +26,8 @@ if (loggedin()) {
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class=""></i>Welcome Admin</div>
             <div class="list-group list-group-flush my-3">
-                <a href="index.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Residents</a>
-   
+            <a href="index.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class=""></i>Home</a>
                 <a href="vaccine_stock.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Vaccine Stock Information</a>
                 <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">Log out</a>
             </div>
@@ -65,8 +65,8 @@ if (loggedin()) {
                                 $query = "SELECT * FROM  user_info  WHERE user_info_id='" . $_GET["user_info_id"] . "'";
                                 $result = $mysqli->query($query);
                                 while ($data = $result->fetch_assoc()) {
-                                    echo "$data[first_name] "."$data[middle_name] "."$data[last_name]";
-                                    echo ' <a href="vaccine_data.php?user_info_id='.$data["user_info_id"].'">Add Vaccine Data</a>';
+                                    echo "$data[first_name]  "."$data[middle_name] "."$data[last_name]";
+                                    echo ' <a href="vaccine_data.php?user_info_id='.$data["user_info_id"].'"><button class="btn btn-primary">Add Vaccine Data</button></a>';
                                 }
                         ?>
                     </h3>      
@@ -74,11 +74,11 @@ if (loggedin()) {
                         <table class="table bg-white rounded shadow-sm  table-hover">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th></th>
                             <th>Vaccine Administered</th>
                             <th>Date Administered</th>
-                            <th>Number of Dosage</th>
-                            <th>Side Effects</th> 
+                            <th>Side Effects</th>
+                            <th>Edit</th>  
                         </tr>
                     </thead>  
                             <?php
@@ -96,11 +96,13 @@ if (loggedin()) {
                                 echo "$data[date_administered]";
                             echo "</td>";
                             echo "<td>";
-                                echo "$data[number_of_dosage]";
+                            echo "$data[side_effects]";
                             echo "</td>";
                             echo "<td>";
-                                echo "$data[side_effects]";
                             echo "</td>"; 
+                            echo "<td>";
+                           
+                            echo "</td>";
                         echo "</tr>";           
                             }
                             ?>   
